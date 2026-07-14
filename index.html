@@ -747,6 +747,15 @@ body.cursor-hot .cur-dot{ opacity:0; }
 .off-t{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.94rem; color:var(--text); }
 .off-a{ margin-top:5px; font-style:normal; font-size:.85rem; color:var(--faint); line-height:1.65; }
 
+/* two offices inside one box: each line gets its own "Office 1 / 2" label */
+.off-a .off-line{ display:flex; gap:9px; align-items:baseline; margin-top:7px; }
+.off-a .off-line:first-child{ margin-top:6px; }
+.off-a .off-line b{
+  flex:none; font-family:'JetBrains Mono',monospace; font-weight:500;
+  font-size:.6rem; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--cyan); padding-top:2px; min-width:52px;
+}
+
 /* the Pakistan line — sits under the two PK offices it belongs to */
 .off-tel{
   display:flex; align-items:center; gap:10px;
@@ -1370,8 +1379,11 @@ body.cursor-hot .cur-dot{ opacity:0; }
           <div class="off">
             <span class="off-code">PK</span>
             <div>
-              <div class="off-t">Operations — Karachi</div>
-              <address class="off-a">Karimabad Block 01, Karachi</address>
+              <div class="off-t">Karachi, Pakistan</div>
+              <address class="off-a">
+                <span class="off-line"><b>Office 1</b>Office E-18, Karimabad Block 01, Karachi</span>
+                <span class="off-line"><b>Office 2</b>Office A-78, Block-C, Naya Nazimabad, Karachi</span>
+              </address>
             </div>
           </div>
 
@@ -1479,7 +1491,8 @@ body.cursor-hot .cur-dot{ opacity:0; }
           <li>
             <address>
               <strong style="color:var(--muted);font-weight:500">Karachi, Pakistan</strong><br>
-              Karimabad Block 01<br>
+              Office 1 &middot; Office E-18, Karimabad Block 01<br>
+              Office 2 &middot; Office A-78, Block-C, Naya Nazimabad<br>
               <a href="tel:+923133688933">+92-313-3688933</a>
             </address>
           </li>
