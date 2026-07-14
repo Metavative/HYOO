@@ -271,6 +271,8 @@ body.cursor-hot .cur-dot{ opacity:0; }
 }
 .nav-tel:hover{ color:var(--text); border-color:rgba(34,211,238,.5); background:rgba(34,211,238,.07); }
 .nav-tel svg{ color:var(--cyan); flex:none; }
+/* two numbers only fit on a wide nav — the UK line is the one that always stays */
+@media (max-width:1180px){ .nav-tel-us{ display:none; } }
 
 /* ============================================================
    buttons
@@ -749,11 +751,14 @@ body.cursor-hot .cur-dot{ opacity:0; }
 }
 .off:hover{ border-color:rgba(139,92,246,.45); background:rgba(139,92,246,.06); transform:translateX(5px); }
 .off-code{
-  flex:none; padding:5px 9px; border-radius:7px;
+  flex:none; display:flex; align-items:center; gap:7px; padding:5px 9px; border-radius:7px;
   font-family:'JetBrains Mono',monospace; font-size:.62rem; letter-spacing:.1em;
   background:var(--grad-soft); border:1px solid var(--line); color:var(--cyan);
 }
-.off.primary .off-code{ background:var(--grad); border-color:transparent; color:#04060D; font-weight:500; }
+.off-flag{
+  flex:none; display:block; width:21px; height:14px; border-radius:2.5px;
+  box-shadow:0 0 0 1px rgba(255,255,255,.14), 0 1px 3px rgba(0,0,0,.35);
+}
 .off-t{ font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:.94rem; color:var(--text); }
 .off-a{ margin-top:5px; font-style:normal; font-size:.85rem; color:var(--faint); line-height:1.65; }
 
@@ -912,6 +917,8 @@ body.cursor-hot .cur-dot{ opacity:0; }
   font-family:'JetBrains Mono',monospace; font-size:1.05rem;
   color:var(--cyan);
 }
+/* the second number sits with the first, not a block away from it */
+.sheet .sheet-tel + .sheet-tel{ margin-top:8px; }
 
 /* ============================================================
    responsive
@@ -1058,6 +1065,10 @@ body.cursor-hot .cur-dot{ opacity:0; }
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
         +44 7383 850510
       </a>
+      <a href="tel:+17573176343" class="nav-tel nav-tel-us" aria-label="Call HYO Global Communications on +1 757 317 6343">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +1 757 317-6343
+      </a>
       <a href="#contact" class="btn btn-primary" data-magnet>
         Get a Quote
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
@@ -1077,6 +1088,7 @@ body.cursor-hot .cur-dot{ opacity:0; }
   <a href="#work"     style="--i:3">Work</a>
   <a href="#contact"  style="--i:4">Contact</a>
   <a href="tel:+447383850510" class="sheet-tel" style="--i:5">+44 7383 850510</a>
+  <a href="tel:+17573176343" class="sheet-tel" style="--i:6">+1 757 317-6343</a>
 </div>
 
 <!-- ============ hero ============ -->
@@ -1382,15 +1394,61 @@ body.cursor-hot .cur-dot{ opacity:0; }
       <div class="offices">
         <h3 class="off-head">Our offices</h3>
         <div class="off-grid">
-          <div class="off primary">
-            <span class="off-code">UK</span>
+          <div class="off">
+            <span class="off-code">
+              <svg class="off-flag" viewBox="0 0 24 16" role="img" aria-label="United States flag">
+                <rect width="24" height="16" fill="#fff"/>
+                <g fill="#B22234">
+                  <rect y="0" width="24" height="1.23"/><rect y="2.46" width="24" height="1.23"/>
+                  <rect y="4.92" width="24" height="1.23"/><rect y="7.38" width="24" height="1.23"/>
+                  <rect y="9.85" width="24" height="1.23"/><rect y="12.31" width="24" height="1.23"/>
+                  <rect y="14.77" width="24" height="1.23"/>
+                </g>
+                <rect width="9.6" height="8.62" fill="#3C3B6E"/>
+                <g fill="#fff">
+                  <circle cx="1.9" cy="1.7" r=".5"/><circle cx="4.8" cy="1.7" r=".5"/><circle cx="7.7" cy="1.7" r=".5"/>
+                  <circle cx="3.35" cy="3.15" r=".5"/><circle cx="6.25" cy="3.15" r=".5"/>
+                  <circle cx="1.9" cy="4.6" r=".5"/><circle cx="4.8" cy="4.6" r=".5"/><circle cx="7.7" cy="4.6" r=".5"/>
+                  <circle cx="3.35" cy="6.05" r=".5"/><circle cx="6.25" cy="6.05" r=".5"/>
+                  <circle cx="1.9" cy="7.5" r=".5"/><circle cx="4.8" cy="7.5" r=".5"/><circle cx="7.7" cy="7.5" r=".5"/>
+                </g>
+              </svg>US</span>
             <div>
-              <div class="off-t">Head Office — Bolton</div>
+              <div class="off-t">Head Office — Danville, Virginia</div>
+              <address class="off-a">527 Bridge St, Suite 501<br>Danville, VA 24541, USA</address>
+            </div>
+          </div>
+
+          <a class="off-tel" href="https://wa.me/17573176343" target="_blank" rel="noopener noreferrer" aria-label="Message the US office on WhatsApp at +1 757 317-6343">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span class="off-tel-n">+1 757 317-6343</span>
+            <span class="off-tel-l">US WhatsApp</span>
+          </a>
+
+          <div class="off">
+            <span class="off-code">
+              <svg class="off-flag" viewBox="0 0 24 16" role="img" aria-label="United Kingdom flag">
+                <rect width="24" height="16" fill="#012169"/>
+                <path d="M0 0 24 16M24 0 0 16" stroke="#fff" stroke-width="3.2"/>
+                <path d="M0 0 24 16M24 0 0 16" stroke="#C8102E" stroke-width="1.7"/>
+                <path d="M12 0V16M0 8H24" stroke="#fff" stroke-width="5.3"/>
+                <path d="M12 0V16M0 8H24" stroke="#C8102E" stroke-width="3.2"/>
+              </svg>UK</span>
+            <div>
+              <div class="off-t">Bolton, United Kingdom</div>
               <address class="off-a">Unit 38, 13 Eldergreen Close<br>Bolton, United Kingdom, BL3 4FX</address>
             </div>
           </div>
+
           <div class="off">
-            <span class="off-code">PK</span>
+            <span class="off-code">
+              <svg class="off-flag" viewBox="0 0 24 16" role="img" aria-label="Pakistan flag">
+                <rect width="24" height="16" fill="#01411C"/>
+                <rect width="6" height="16" fill="#fff"/>
+                <circle cx="16.4" cy="8.4" r="4.5" fill="#fff"/>
+                <circle cx="18.2" cy="6.9" r="4.4" fill="#01411C"/>
+                <path d="m19.9 4.1.42 1.28 1.35-.02-1.1.79.44 1.27-1.11-.76-1.11.76.44-1.27-1.1-.79 1.35.02z" fill="#fff"/>
+              </svg>PK</span>
             <div>
               <div class="off-t">Karachi, Pakistan</div>
               <address class="off-a">
@@ -1404,20 +1462,6 @@ body.cursor-hot .cur-dot{ opacity:0; }
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             <span class="off-tel-n">+92-313-3688933</span>
             <span class="off-tel-l">Pakistan line</span>
-          </a>
-
-          <div class="off">
-            <span class="off-code">US</span>
-            <div>
-              <div class="off-t">Danville, Virginia</div>
-              <address class="off-a">527 Bridge St, Suite 501<br>Danville, VA 24541, USA</address>
-            </div>
-          </div>
-
-          <a class="off-tel" href="https://wa.me/17573176343" target="_blank" rel="noopener noreferrer" aria-label="Message the US office on WhatsApp at +1 757 317-6343">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span class="off-tel-n">+1 757 317-6343</span>
-            <span class="off-tel-l">US WhatsApp</span>
           </a>
         </div>
       </div>
@@ -1513,7 +1557,15 @@ body.cursor-hot .cur-dot{ opacity:0; }
           <li><a href="mailto:sales@hyogc.com">sales@hyogc.com</a></li>
           <li>
             <address>
-              <strong style="color:var(--muted);font-weight:500">Head Office — UK</strong><br>
+              <strong style="color:var(--muted);font-weight:500">Head Office — USA</strong><br>
+              527 Bridge St, Suite 501<br>
+              Danville, VA 24541<br>
+              <a href="https://wa.me/17573176343" target="_blank" rel="noopener noreferrer">+1 757 317-6343</a>
+            </address>
+          </li>
+          <li>
+            <address>
+              <strong style="color:var(--muted);font-weight:500">Bolton, United Kingdom</strong><br>
               Unit 38, 13 Eldergreen Close<br>
               Bolton, United Kingdom, BL3 4FX
             </address>
@@ -1524,14 +1576,6 @@ body.cursor-hot .cur-dot{ opacity:0; }
               Office 1 &middot; Office E-18, Karimabad Block 01<br>
               Office 2 &middot; Office A-78, Block-C, Naya Nazimabad<br>
               <a href="tel:+923133688933">+92-313-3688933</a>
-            </address>
-          </li>
-          <li>
-            <address>
-              <strong style="color:var(--muted);font-weight:500">Danville, Virginia, USA</strong><br>
-              527 Bridge St, Suite 501<br>
-              Danville, VA 24541<br>
-              <a href="https://wa.me/17573176343" target="_blank" rel="noopener noreferrer">+1 757 317-6343</a>
             </address>
           </li>
         </ul>
