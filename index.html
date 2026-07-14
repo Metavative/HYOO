@@ -228,11 +228,21 @@ body.cursor-hot .cur-dot{ opacity:0; }
   transform:rotate(-8deg) scale(1.08);
   filter:drop-shadow(0 0 12px rgba(34,211,238,.55));
 }
-.brand-name{
+/* two-line lockup: "HYO Global" over a small tracked-out "COMMUNICATIONS",
+   so the full name fits the nav without stretching it */
+.brand-name{ display:flex; flex-direction:column; gap:4px; }
+.brand-top{
   font-family:'Space Grotesk',sans-serif; font-weight:600;
   font-size:15px; letter-spacing:-.01em; line-height:1;
 }
-.brand-name span{ color:var(--cyan); }
+.brand-top span{ color:var(--cyan); }
+.brand-sub{
+  font-family:'JetBrains Mono',monospace; font-weight:400;
+  font-size:8.5px; letter-spacing:.22em; text-transform:uppercase;
+  line-height:1; color:var(--faint);
+  transition:color .4s var(--ease);
+}
+.brand:hover .brand-sub{ color:var(--muted); }
 
 .nav-links{ display:flex; align-items:center; gap:34px; }
 .nav-link{
@@ -1029,7 +1039,10 @@ body.cursor-hot .cur-dot{ opacity:0; }
   <div class="shell nav-in">
     <a href="#top" class="brand" aria-label="HYO Global Communications — home">
       <span class="brand-mark" role="img" aria-label="HYO Global logo"></span>
-      <span class="brand-name">HYO<span> Global</span></span>
+      <span class="brand-name">
+        <span class="brand-top">HYO<span> Global</span></span>
+        <span class="brand-sub">Communications</span>
+      </span>
     </a>
 
     <nav class="nav-links" aria-label="Primary">
@@ -1444,7 +1457,10 @@ body.cursor-hot .cur-dot{ opacity:0; }
       <div>
         <div class="brand">
           <span class="brand-mark" role="img" aria-label="HYO Global logo"></span>
-          <span class="brand-name">HYO<span> Global</span></span>
+          <span class="brand-name">
+            <span class="brand-top">HYO<span> Global</span></span>
+            <span class="brand-sub">Communications</span>
+          </span>
         </div>
         <p class="f-about">Web, app, and digital marketing — one partner accountable for building and growing your digital presence.</p>
         <div class="socials">
